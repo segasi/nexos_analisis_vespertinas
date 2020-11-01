@@ -36,8 +36,9 @@ bd_vespertinas <-
          texto = str_replace_all(texto, "RICARDO CORTÉS", "~RICARDO CORTÉS"),
          texto = str_replace_all(texto, "RUY LÓPEZ", "~RUY LÓPEZ"),
          texto = str_replace_all(texto, "RUY LOPEZ", "~RUY LÓPEZ"),
-         texto = str_replace_all(texto, "VÍCTOR HUGO BORJA", "~VÍCTOR HUGO BORJA"),
          texto = str_replace_all(texto, ". HUGO BORJA", ". ~HUGO BORJA"),
+         texto = str_replace_all(texto, "VÍCTOR HUGO BORJA", "~VÍCTOR HUGO BORJA"),
+         
          texto = str_replace_all(texto, "GUSTAVO REYES TERÁN", "~GUSTAVO REYES TERÁN"),
          texto = str_replace_all(texto, "GUSTAVO REYÉS TERÁN", "~GUSTAVO REYES TERÁN"),
          texto = str_replace_all(texto, "ZOÉ ROBLEDO ABURTO", "~ZOÉ ROBLEDO ABURTO"),
@@ -153,8 +154,7 @@ bd_vespertinas <-
          texto = str_replace_all(texto, "GUILLERMO PEÑALOZA", "~GUILLERMO PEÑALOZA"),
          
          texto = str_replace_all(texto, "JOSÉ SALVADOR ABURTO MORALES", "~JOSÉ SALVADOR ABURTO MORALES"),
-         
-         
+         texto = str_replace_all(texto, "MARÍA DEL ROCÍO GARCÍA", "~MARÍA DEL ROCÍO GARCÍA"),
          texto = str_replace_all(texto, "MODERADOR:", "~MODERADOR:"),
          texto = str_replace_all(texto, "PREGUNTA:", "~PREGUNTA:"),
          texto = str_replace_all(texto, "INTERLOCUTORA:", "~INTERLOCUTORA:"),
@@ -227,6 +227,7 @@ bd_vespertinas <-
          nombre = str_replace(nombre, "GIANCARLO SUMMA:", "GIANCARLO SUMMA"),
          nombre = str_to_title(nombre),
          nombre = str_replace(nombre, " De ", " de "),
+         nombre = str_replace(nombre, " Del ", " del "),
          nombre = str_replace(nombre, " La ", " la "),
          nombre = case_when(str_detect(nombre, "Inicia Video") ~ "Inicia video",
                             str_detect(nombre, "Proyección de Video") ~ "Inicia video",
@@ -249,6 +250,7 @@ bd_vespertinas <-
                             str_detect(nombre, "Miriam Veras Godoy") ~ "Miriam Esther Veras Godoy",
                             str_detect(nombre, "Ricardo Cortés") ~ "Ricardo Cortés Alcalá",
                             str_detect(nombre, "Hugo Borja") ~ "Víctor Hugo Borja Aburto",
+                            str_detect(nombre, "Gabriela Rodríguez") ~ "Gabriela Rodríguez Ramírez",
                             str_detect(nombre, "Interloc") ~ "Reportera/o",
                             str_detect(nombre, "Pregun") ~ "Reportera/o",
                             str_detect(nombre, "Interven") ~ "Reportera/o",
@@ -277,6 +279,7 @@ bd_vespertinas <-
          cargo = str_replace_all(cargo, " Del ", " del "),
          cargo = str_replace_all(cargo, " La ", " la "),
          cargo = str_replace_all(cargo, " Y ", " y "),
+         cargo = str_replace_all(cargo, " E ", " e "),
          cargo = str_replace_all(cargo, " En ", " en "),
          cargo = str_replace_all(cargo, " El ", " el "),
          cargo = str_replace_all(cargo, " Un ", " un "),
@@ -300,6 +303,7 @@ bd_vespertinas <-
                            nombre == "Gabriel García Rodríguez" ~ "Director del Centro Operativo para la Atención de Contingencias",
                            nombre == "Gabriel Yorio González" ~ "Subsecretario de Hacienda y Crédito Público, Secretaría de Hacienda y Crédito Público",
                            nombre == "Gabriela Rodríguez" ~ "Secretaria General de CONAPO",
+                           nombre == "Gabriela Rodríguez Ramírez" ~ "Secretaria General de CONAPO",
                            nombre == "Gady Zabicky Sirot" ~ "Comisionado Nacional Contra las Adicciones",
                            nombre == "Giancarlo Summa" ~ "Director del Centro de Información de Naciones Unidas (CINU) para México, Cuba y República Dominicana",
                            nombre == "Gisela Lara Saldaña" ~ "Titular de la Unidad del Programa IMSS-Bienestar",
@@ -358,7 +362,7 @@ bd_vespertinas <-
                            nombre == "Emmanuel Sarmiento Hernández" ~ "Director del Hospital Psiquiátrico Infantil Dr. Juan N. Navarro",
                            nombre == "Luis Miguel Gutiérrez Robledo" ~ "Director General del Instituto Nacional de Geriatría",
                            nombre == "José Salvador Aburto Morales" ~ "Director General del Centro Nacional de Trasplantes",
-                           nombre == "" ~ "",
+                           nombre == "Ernesto Ramírez González" ~ "Titular de la Unidad de Desarrollo Tecnológico e Investigación Molecular del INDRE",
                            nombre == "Miriam Esther Veras Godoy" | nombre ==  "Miriam Veras Godoy" ~ "Directora General del CeNSIA",
                            TRUE ~ cargo),
          cargo = str_replace(cargo, "Instituto Mexicano del Seguro Social", "IMSS"),
@@ -373,7 +377,80 @@ bd_vespertinas <-
 # Verificar que cargos sean homogéneos
 bd_vespertinas %>% 
   count(nombre, cargo) %>%
+  arrange(cargo) %>%
   print(n = Inf)
+
+
+### Generar columna que registre el tipo de cargo ----
+bd_vespertinas <- 
+  bd_vespertinas %>% 
+  mutate(tipo_cargo = case_when(cargo == "Gobernador de Baja California Sur" ~ "Titular de ejecutivo estatal",
+                                cargo == "Gobernador de Chiapas" ~ "Titular de ejecutivo estatal",
+                                cargo == "Gobernador de Puebla" ~ "Titular de ejecutivo estatal",
+                                cargo == "Gobernador de Tabasco" ~ "Titular de ejecutivo estatal",
+                                cargo == "Gobernador de San Luis Potosí" ~ "Titular de ejecutivo estatal",
+                                cargo == "Jefa de Gobierno de la Ciudad de México" ~ "Titular de ejecutivo estatal",
+                                
+                                # Gabinete federal
+                                cargo == "Secretaria de Bienestar" ~ "Gabinete federal",
+                                cargo == "Secretaria de Cultura" ~ "Gabinete federal",
+                                cargo == "Secretario de la Defensa Nacional" ~ "Gabinete federal",
+                                cargo == "Secretario de Educación Pública" ~ "Gabinete federal",
+                                cargo == "Secretaria de Economía" ~ "Gabinete federal",
+                                cargo == "Secretario de Marina" ~ "Gabinete federal",
+                                cargo == "Secretario de Relaciones Exteriores" ~ "Gabinete federal",
+                                cargo == "Secretario de Salud" ~ "Gabinete federal",
+                                cargo == "Secretario de Turismo" ~ "Gabinete federal",
+                                cargo == "Subsecretario de Hacienda y Crédito Público, Secretaría de Hacienda y Crédito Público" ~ "Gabinete federal",
+                                cargo == "Subsecretario de Educación Superior, Subsecretaría de Educación Pública" ~ "Gabinete federal",
+                                cargo == "Subsecretario de Prevención y Promoción de la Salud, Secretaría de Salud" ~ "Gabinete federal",
+                                cargo == "Subsecretario de Autosuficiencia Alimentaria, Secretaría de Agricultura y Desarrollo Rural" ~ "Gabinete federal",
+                                
+                                
+                                # Funcionario estatal
+                                cargo == "Secretaria de Salud de la Ciudad De México" ~ "Funcionario estatal",
+                                cargo == "Fiscal General de Justicia de la Ciudad de México" ~ "Funcionario estatal",
+                                cargo == "Secretaria de Salud de Tabasco" ~ "Funcionario estatal",
+                                cargo == "Secretario de Salud de Puebla" ~ "Funcionario estatal",
+                                cargo == "Secretario de Salud de Oaxaca" ~ "Funcionario estatal",
+                                cargo == "Secretario de Salud de Guanajuato" ~ "Funcionario estatal",
+                                
+                                # Funcionario municipal
+                                
+                                cargo == "Presidente municipal de Berriozábal" ~ "Funcionario municipal",
+                                
+                                # Ejecutivo federal
+                                cargo == "Directora General del CONACYT" ~ "Ejecutivo federal",
+                                cargo == "Coordinadora de Repositorios, Investigación y Prospectiva de CONACYT" ~ "Ejecutivo federal",
+                                cargo == "Director General del IMJUVE" ~ "Ejecutivo federal",
+                                cargo == "Presidenta de INMUJERES" ~ "Ejecutivo federal",
+                                cargo == "Presidente del CONAPRED" ~ "Ejecutivo federal",
+                                cargo == "Presidente del Sistema Público de Radiodifusión del Estado Mexicano" ~ "Ejecutivo federal",
+                                cargo == "Secretaria General de CONAPO" ~ "Ejecutivo federal",
+                                cargo == "Secretario Ejecutivo del Sistema Nacional de Protección Integral de Niñas, Niños (SIPINA)" ~ "Ejecutivo federal",
+                                cargo == "Titular de la Procuraduría Agraria" ~ "Ejecutivo federal",
+                                
+                                # Organismo internacional
+                                cargo == "Asesor Internacional de Emergencias de Salud, OPS/OMS" ~ "Organismo internacional",
+                                cargo == "Asesor Internacional en Enfermedades Crónicas de la OMS/OPS" ~ "Organismo internacional",
+                                cargo == "Director del Centro de Información de Naciones Unidas (CINU) para México, Cuba y República Dominicana" ~ "Organismo internacional",
+                                cargo == "Jefa de Política Social de la UNICEF" ~ "Organismo internacional",
+                                cargo == "Oficial Nacional de Salud y Nutrición de la UNICEF México" ~ "Organismo internacional", 
+                                str_detect(cargo, "Representante de la OM") ~ "Organismo internacional",
+                                cargo == "Representante de la UNICEF en México" ~ "Organismo internacional",
+                                cargo == "" ~ "Organismo internacional",
+                                
+                                
+                                # Otros 
+                                cargo == "Fundadora y Coordinadora del Centro de Apoyo y Capacitación para Empleadas del Hogar" ~ "Otros", 
+                                nombre == "Diana" ~ "Otros",
+                                nombre == "Inicia video" ~ "Otros",
+                                nombre == "Italy Miguel Reyes" ~ "Otros",
+                                nombre == "Moderador" ~ "Otros",
+                                nombre == "Reportera/o" ~ "Otros",
+                                
+                                TRUE ~ "Sector salud")) %>% 
+  relocate(tipo_cargo, .after = cargo)
 
 
 ### Generar columna que registre la fecha en que se emitió cada diálogo---- 
@@ -393,9 +470,16 @@ bd_vespertinas <-
   select(vespertina_id, fecha, fecha_texto, titulo:url)
 
 
+### Construir variable para registrar la semana epidemiológica en que se llevó a cabo la conferencia vespertina -----
+bd_vespertinas <- 
+  bd_vespertinas %>% 
+  mutate(semana_epi = epiweek(fecha)) %>% 
+  relocate(semana_epi, .before = titulo)
+
+
 ### Guardar base de datos en formato .csv y .RData ----
 bd_vespertinas %>%
   select(-titulo) %>%
-  write_csv("04_datos_output/bd_dialogos.csv")
+  write_csv("04_datos_output/bd_dialogos_vespertinas.csv")
 
-save(transcripciones, file = "04_datos_output/bd_dialogos.RData")
+save(bd_vespertinas, file = "04_datos_output/bd_dialogos_vespertinas.RData")
