@@ -251,10 +251,6 @@ Un ejemplo ilustra este punto. La mañana del 21 de agosto Mike Ryan, Director E
 
 Las declaraciones de Ryan fueron retomadas por los medios mexicanos y marcaron la agenda del día. Esa noche Gabastou fue invitado a la vespertina, y por la forma en que López-Gatell lo presentó,^[López-Gatell declaró: "[…] ya veo que no está nuestro compañero Alejandro Alemán, ah, ahí está, vengase, Alejandro, sé que hoy se fue a Ginebra en búsqueda de respuestas y para facilitar la respuesta, además de la que dio el doctor Michael Ryan, en México hay una oficina de la Organización Mundial de la Salud; entonces, fuimos a buscar también nosotros respuestas y aquí está el doctor Jean Marc Gabastou para elaborar sobre lo que usted preguntó al doctor Mike Ryan.] parecería que la intención era tenerlo ahí para matizar las declaraciones del Director Ejecutivo de la OMS. Al tomar la palabra, Gabastou ofreció una larga respuesta en la que trató de conciliar lo dicho por Ryan con la política adoptada por el gobierno mexicano, diciendo, entre otras cosas: "La cuestión no es de saber si se están haciendo suficientes pruebas, sino si se lo está haciendo bien".^[La transcripción puede ser consultada en https://bit.ly/2SeRYos.] Tan grande era el apoyo de Gabastou a la política impulsada por López-Gatell que estuvo dispuesto a cuestionar públicamente a una de las cabezas de su organización.
 
-<!-- El primero es que Morales acompañó a López-Gatell a la vespertinas realizadas en Chiapas, Tabasco y Puebla para impulsar el modelo de Acción Comunitaria por la Salud. En cada una de estas conferencias destacó la relevancia del modelo y su consistencia con las políticas recomendadas por la OPS. -->
-
-<!-- El segundo ejemplo es quizá más elocuente, pues muestra la disposición de Gabastou para apoyar al gobierno de México incluso si esto significa estar al borde de contradecir los dichos de sus superiores en la OMS.  -->
-
 Cambio ahora el enfoque del análisis al plano cuantitativo. La siguiente gráfica muestra el número de conferencias vespertinas en las que participaron las y los 20 invitados más frecuentes (todas y todos con al menos tres participaciones).
 
 ```{r, echo = F, fig.width = 16, fig.height = 12, dpi = 200}
@@ -309,7 +305,6 @@ bd_vespertinas %>%
   distinct(fecha)
 ```
 
-<!-- Cuarto, en la lista de 20 invitadas e invitados más frecuentes únicamente hay cinco mujeres. Lorena Rodríguez-Bores, Secretaria Técnica del Consejo Nacional de Salud Mental (CONASAME), Ana Lucía de la Garza, Directora de Investigación Operativa Epidemiológica en la Secretaría de Salud, y Karla Berdichevsky, Directora del Centro Nacional de Equidad de Género y Salud Reproductiva (CNEGSR) encabezan la lista con siete, seis y seis participaciones, respectivamente.  -->
 
 # El papel de las y los invitados
 
@@ -326,8 +321,6 @@ bd_vespertinas %>%
 
 
 Desde el primer día el subsecretario López-Gatell decidió tener invitados en las vespertinas. Durante el período analizado, participó cuando menos un invitado en el 66.4% de las conferencias (140 de 211). 
-
-<!-- En la gran mayoría de las ocasiones (120 de 140 conferencias) se invitó a una (92) o dos personalidades (28), pero hubo al menos siete vespertinas en las que este número fue de cinco o más. -->
 
 Esta decisión probablemente permitió que el subsecretario López-Gatell cumpliera con diversos propósitos, algunos de los cuales probablemente definió sobre la marcha. Menciono tres aquí. El primero y más evidente es ofrecer a la ciudadanía información especializada, relevante y oportuna sobre diferentes aspectos de la pandemia. El segundo fue contar con contenido suficiente para producir un programa de una hora durante 211 días. 
 
@@ -421,128 +414,9 @@ foo %>%
 
 La gráfica muestra un cambio sustantivo a partir de la semana epidemiológica 29 (12 al 18 de julio), representada por la línea vertical gris en los cuatro paneles. Esa semana el porcentaje de letras pronunciadas por López-Gatell se redujo notablemente y a partir de entonces se mantuvo en un nivel más bajo que en todo el período previo. Mientras que el subsecretario pronunció, en promedio, el 53.2% de todas las letras de cada semana entre las semanas 10 y 28, en las siguientes 11 semanas este promedio se redujo a 40%. 
 
-<!-- De forma consistente, mientras que el subsecretario pronunció 50% o más del total de letras en 14 de las 19 semanas que transcurrieron entre las semanas epidemiológicas 10 y 28, a partir de la semana 29 esto no ocurrió en semana alguna. -->
-
 De forma casi simétrica, en la semana 29 el porcentaje de letras pronunciadas conjuntamente por las y los invitados a una vespertina aumentó y se mantuvo en un mayor nivel durante el resto del período analizado. El promedio del porcentaje de letras pronunciadas por las y los invitados pasó de 18.9% en las semanas 10 a 28, a 33.8% en las siguientes 11 semanas.  
 
 
 Más allá de confirmar que las vespertinas son un ejercicio de comunicación sobre aspectos técnicos de la pandemia de covid-19 que López-Gatell domina, la radiografía aquí presentada sugiere que con el paso de las semanas estas conferencias comenzaron a cumplir un propósito adicional: ser una plataforma de comunicación y negociación política. Estudiar dónde se llevaron a cabo y quiénes participaron nos permite entender quiénes son las y los actores cercanos al subsecretario López-Gatell, así como aquellos que él ha marginado. Nos permite recordar los vacíos de poder que han contribuido al crecimiento del rol político del subsecretario, así como entender el esfuerzo explícito de diversos interlocutores por transmitir -con mayor o menor credibilidad- la construcción de alianzas y/o reconciliaciones.
 
  
-
-
-
-<!-- funcionarios públicos federales, estatales y municipales, miembros de diversas organizaciones sociales y ciudadanos participaron como anfitriones o invitados en las conferencias vespertinas. -->
-
-<!-- Si se considera cada intervención en la conferencia vespertina como un diálogo, los poco más de 100 invitados emitieron `r bd_vespertinas %>% filter(!nombre %in% c("Reportera/o", "Inicia video")) %>% summarise(num = comma(n()))`. Y si se incluyen las intervenciones de la prensa y los videos transmitidos en algunas vespertinas, el total de diálogos aumenta a `r bd_vespertinas %>% summarise(num = comma(n()))`. -->
-
-<!-- En total, durante las conferencias analizadas se pronunciaron `r bd_palabras_todas %>% summarise(num = comma(n()))` palabras.  -->
-
-
-
-
-
-
-
-
-<!-- # Personajes -->
-
-<!-- ```{r, echo=F, eval=F} -->
-<!-- bd_vespertinas %>%  -->
-<!--   filter(str_detect(cargo, "Gober|Jefa de Gobierno")) %>%  -->
-<!--   count(fecha, nombre, cargo) -->
-<!-- ``` -->
-
-
-<!-- - Titulares de Ejecutivos locales: -->
-
-<!--     -   -->
-
-<!-- - Secretarios de Salud estatales: -->
-
-<!-- ```{r, echo=F, eval=F} -->
-<!-- bd_vespertinas %>%  -->
-<!--   filter(str_detect(cargo, "Secretario de Salud|Secretaria de Salud"), -->
-<!--          !str_detect(nombre, "Jorge Carlos Alcocer")) %>%  -->
-<!--   count(fecha, nombre, cargo) -->
-<!-- ``` -->
-
-
-<!--     - Secretario de Salud de Puebla, José Antonio Martínez García (2020-07-31) -->
-<!--     - Secretario de Salud de Oaxaca, Donato Augusto Casas Escamilla (2020-09-18) -->
-<!--     - Secretario de Salud de Guanajuato, Daniel Díaz Martínez (2020-03-06) -->
-<!--     - Secretaria de Salud de Tabasco, Silvia Roldán Fernández (2020-07-24) -->
-<!--     - Secretaria de Salud de la Ciudad De México, Oliva López Arellano (2020-06-10, 2020-07-25) -->
-
-
-<!-- - Vespertinas con más oradores -->
-
-<!-- 2020-07-17 -->
-
-
-<!-- - Vespertinas con menos oradores -->
-
-<!-- - Vespertinas encabezadas por LG -->
-
-<!-- - Vespertinas encabezadas por alguien diferente a la sagrada trinidad -->
-
-<!-- Pocas personas pondrían en duda que el actor central del espacio de las 7 p.m. es el Subsecretario de Prevención y Promoción de la Salud, Hugo López-Gatell Ramírez. Ha participado en `r datos_participacion_vespertinas %>% filter(str_detect(nombre, "López-Gat")) %>% select(num_part_vespertinas) %>% pull()` de las conferencias (`r datos_participacion_vespertinas %>% filter(str_detect(nombre, "López-Gat")) %>% select(por_part_vespertinas) %>% pull()`% del total), ha pronunciado `r datos_palabras_por_persona %>% filter(str_detect(nombre, "López-Gat")) %>% select(por_palabras) %>% pull()` de las `r datos_palabras_por_persona %>% filter(str_detect(nombre, "López-Gat")) %>% select(total_palabras) %>% mutate(total_palabras = comma(total_palabras)) %>% pull()` palabras registradas en las versiones estenográficas.  -->
-
-<!-- Además de López-Gatell, la lista de personas con mayor número de conferencias la encabezan José Luis Alomía, Director General de Epidemiología, y Ricardo Cortés Director General de Promoción:  `r datos_participacion_vespertinas %>% filter(str_detect(nombre, "Alomía")) %>% select(num_part_vespertinas) %>% pull()` y `r datos_participacion_vespertinas %>% filter(str_detect(nombre, "Cortés Alcalá")) %>% select(num_part_vespertinas) %>% pull()`, respectivamente. -->
-
-<!-- A lo largo de las `r bd_vespertinas %>% distinct(fecha) %>% tally()` conferencias vespertinas, las `r bd_vespertinas %>% distinct(nombre) %>% tally()` personas que participaron emitieron diálogos. -->
-
-
-<!-- # Temas a resolver -->
-
-<!-- 1. Intro -->
-
-<!-- 2. Definir estructura -->
-
-<!--   - Intro -->
-<!--   - Personajes -->
-
-<!--     - Total -->
-<!--     - Principales actores -->
-<!--     - Principales ausentes -->
-
-<!--   - Sedes   -->
-
-<!--     - Número y ubicación -->
-<!--     -  -->
-
-<!--   - Diálogos -->
-
-<!--     - Palabras, bigramas y trigramas más frecuentes -->
-<!--     - Evolución de diálogos en el tiempo -->
-
-<!--   - López-Gatell -->
-
-<!--     - Palabras, bigramas y trigramas más frecuentes -->
-<!--     - Evolución de diálogos en el tiempo -->
-
-<!-- 3. Buscar experiencias de otros países respecto a conferencias -->
-
-<!--   - General:  -->
-
-<!--     - [La Tercera](https://www.latercera.com/mundo/noticia/como-informan-los-paises-sobre-el-coronavirus/5DDLJYWTW5HAVKAPY32XS52WVI/) -->
-
-<!--   - España:  -->
-
-<!--     - [Análisis](http://eprints.rclis.org/40348/1/castillo-fernandez-puentes.pdf) -->
-
-<!--   - UK: -->
-<!--     - [Datos oficiales](https://www.gov.uk/government/collections/slides-and-datasets-to-accompany-coronavirus-press-conferences) -->
-<!--     - [Análisis](https://onlinelibrary.wiley.com/doi/10.1111/1467-923X.12901) -->
-
-<!-- 4. Buscar métricas de derechohabientes del IMSS, ISSSTE, INSABI, IMSS-Bienestar -->
-
-<!-- 5. Buscar: -->
-
-<!--   - Estados más mencionados -->
-<!--   - Gobernadores más mencionados por LG -->
-<!--   - Gobernadores más mencionados por LG -->
-<!--   - Secretarios de estado con más conferencias -->
-<!--   - Última vez que participó un secretario -->
-<!--   - Estados en donde han habido vespertinas: -->
-<!--     - Puebla | 31/07 | [liga](https://www.facebook.com/HugoLopezGatell/videos/conferencia-de-prensa-desde-puebla-actualizaci%C3%B3n-del-covid19-en-m%C3%A9xico-viernes-3/290156765549132/) -->
