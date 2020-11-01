@@ -1,6 +1,6 @@
 # Las vespertinas: una radiografía de los primeros seis meses
 
-Este repo contiene los datos, el código y gráficas que usé/generé para el análisis publicado en el número de noviembre de 2020 de la revista Nexos.
+Este repo contiene los datos, el código y gráficas que usé/generé para el [análisis publicado](https://www.nexos.com.mx/?p=50944) en el número de noviembre de 2020 de la revista Nexos.
 
 En este texto presento una radiografía de las 211 las conferencias vespertinas realizadas entre el 28 de febrero y el 28 de septiembre. Mientras que Manuel Toral ofrece un [excelente análisis](https://www.nexos.com.mx/?p=51044) sobre los cambios en la temática de las vespertinas en otro artículo de este número, en mi análisis me concentró en tres aspectos diferentes: las sedes en donde se realizaron estas conferencias, los participantes que asistieron y el papel de los invitados en las mismas.
 
